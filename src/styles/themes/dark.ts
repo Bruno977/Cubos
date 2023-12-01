@@ -12,6 +12,7 @@ export const darkTheme = {
     ...purpleDark,
     ...mauveDark,
     ...mauveDarkA,
+    white: '#ffffff',
   },
   ...variables,
 };
@@ -74,4 +75,3 @@ export const darkTheme = {
 //   --purple-a11: #d19dff;
 //   --purple-a12: #f1ddfffa;
 // }
-// #121113, #12111375, #121113

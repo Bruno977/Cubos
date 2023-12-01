@@ -5,6 +5,8 @@ declare module 'styled-components' {
     transition: string;
 
     colors: {
+      white: string;
+
       purple1: string;
       purple2: string;
       purple3: string;

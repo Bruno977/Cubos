@@ -7,6 +7,7 @@ export const lightTheme = {
     ...purpleA,
     ...mauve,
     ...mauveA,
+    white: '#ffffff',
   },
   ...variables,
 };
