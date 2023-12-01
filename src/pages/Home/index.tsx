@@ -1,31 +1,44 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { Container } from '../../styles/global';
 import { MoviesProps } from '../../types/movies';
 import { BackgroundSection, ListMovies, Section } from './style';
 import { Search } from '../../components/Search';
-import Background from '../../assets/backgropund-krists-luhaers-unsplash.png';
-
-// import teste from ""
+import { Pagination } from '../../components/Pagination';
+import { useLocation } from 'react-router-dom';
 
 export function Home() {
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+
   const [movies, setMovies] = useState<MoviesProps['results'][] | null>(null);
-  async function getMovies() {
+  const [pages, setPages] = useState({
+    page: 1,
+    totalPages: 1,
+  });
+
+  async function getMovies(page: number) {
     try {
       const response = await api.get('/movie/popular', {
         params: {
           language: 'pt-BR',
+          page: page ? page : pages.page,
         },
       });
       setMovies(response.data.results);
-      console.log(response.data.results);
+      setPages({
+        page: response.data.page,
+        totalPages: response.data.totalPages,
+      });
     } catch (error) {
       console.log(error);
     }
   }
+
   useEffect(() => {
-    getMovies();
-  }, []);
+    const page = queryParams.get('page');
+    getMovies(Number(page));
+  }, [search]);
   return (
     <Section>
       <BackgroundSection>
@@ -49,6 +62,7 @@ export function Home() {
             ))}
           </ListMovies>
         )}
+        <Pagination pages={pages.totalPages} currentPage={pages.page} />
       </Container>
     </Section>
   );
