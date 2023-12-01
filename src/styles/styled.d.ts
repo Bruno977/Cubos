@@ -2,6 +2,8 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    transition: string;
+
     colors: {
       purple1: string;
       purple2: string;

@@ -4,6 +4,7 @@ import {
   mauveDark,
   mauveDarkA,
 } from '@radix-ui/colors';
+import { variables } from '../variables';
 
 export const darkTheme = {
   colors: {
@@ -12,6 +13,7 @@ export const darkTheme = {
     ...mauveDark,
     ...mauveDarkA,
   },
+  ...variables,
 };
 
 // .mauveDarkA {
@@ -72,3 +74,4 @@ export const darkTheme = {
 //   --purple-a11: #d19dff;
 //   --purple-a12: #f1ddfffa;
 // }
+// #121113, #12111375, #121113

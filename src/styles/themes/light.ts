@@ -1,4 +1,5 @@
 import { purple, purpleA, mauve, mauveA } from '@radix-ui/colors';
+import { variables } from '../variables';
 
 export const lightTheme = {
   colors: {
@@ -7,4 +8,5 @@ export const lightTheme = {
     ...mauve,
     ...mauveA,
   },
+  ...variables,
 };
