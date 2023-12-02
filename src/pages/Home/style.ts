@@ -61,6 +61,7 @@ export const ListMovies = styled.ul`
     border-radius: 0.25rem;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 
     &:before {
       content: '';
@@ -74,16 +75,79 @@ export const ListMovies = styled.ul`
     img {
       height: 100%;
     }
-    div {
-      position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      p {
-        color: #eee;
-        font-size: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-      }
+  }
+`;
+
+export const MovieDescription = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    color: #eee;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  span {
+    color: #b4b4b4;
+    font-size: 0.8rem;
+    font-weight: 400;
+    transform: translateY(100px);
+    transition: ${(props) => props.theme.transition};
+    opacity: 0;
+
+    ${ListMovies} li:hover & {
+      transform: translateY(0px);
+      opacity: 1;
     }
+  }
+`;
+
+export const ContainerRating = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: 4.56rem;
+`;
+export const RatingProgress = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+
+  max-width: 144px;
+  max-height: 144px;
+  margin: 0 auto;
+  border-radius: 99999px;
+  backdrop-filter: blur(2px);
+
+  transition: opacity 0.2s ease-in-out 0s;
+  opacity: 0;
+  ${ListMovies} li:hover & {
+    opacity: 1;
+  }
+`;
+
+export const RatingShadow = styled.div`
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  left: 5px;
+  bottom: 2px;
+  z-index: 10;
+  max-width: 144px;
+  max-height: 144px;
+  margin: 0 auto;
+
+  transition: opacity 0.2s ease-in-out 0s;
+  opacity: 0;
+
+  ${ListMovies} li:hover & {
+    opacity: 1;
   }
 `;
