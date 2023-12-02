@@ -8,6 +8,13 @@ export const Section = styled.section`
   padding-top: 84px;
 `;
 
+export const ContainerMovies = styled.div`
+  @media screen and (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+`;
+
 export const BackgroundSection = styled.div`
   position: absolute;
   height: 35.25rem;
@@ -48,9 +55,9 @@ export const BackgroundSection = styled.div`
 `;
 export const ListMovies = styled.ul`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-  padding: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem;
 
   border-radius: 0.25rem;
   background: ${(props) => props.theme.colors.mauveA3};
@@ -75,6 +82,12 @@ export const ListMovies = styled.ul`
     img {
       height: 100%;
     }
+  }
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
 `;
 

@@ -20,13 +20,16 @@ export const GlobalStyle = createGlobalStyle`
   ol, ul {
      list-style: none; 
   }
-
   img {
-    max-width: 100%;
+    max-width: 100%; 
 }
 `;
 
 export const Container = styled.div`
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media screen and (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 `;

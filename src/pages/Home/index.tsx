@@ -10,6 +10,7 @@ import {
   RatingProgress,
   RatingShadow,
   Section,
+  ContainerMovies,
 } from './style';
 import { Search } from '../../components/Search';
 import { Pagination } from '../../components/Pagination';
@@ -74,6 +75,8 @@ export function Home() {
       </BackgroundSection>
       <Container>
         <Search />
+      </Container>
+      <ContainerMovies>
         {movies && movies.length > 0 && (
           <ListMovies>
             {movies.map((movie) => (
@@ -115,8 +118,8 @@ export function Home() {
             ))}
           </ListMovies>
         )}
-        <Pagination pages={pages.totalPages} currentPage={pages.page} />
-      </Container>
+      </ContainerMovies>
+      <Pagination pages={pages.totalPages} currentPage={pages.page} />
     </Section>
   );
 }
