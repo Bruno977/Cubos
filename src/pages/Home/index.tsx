@@ -10,6 +10,7 @@ import { useLocation } from 'react-router-dom';
 export function Home() {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
+  const page = queryParams.get('page');
 
   const [movies, setMovies] = useState<MoviesProps['results'][] | null>(null);
   const [pages, setPages] = useState({
@@ -36,9 +37,8 @@ export function Home() {
   }
 
   useEffect(() => {
-    const page = queryParams.get('page');
     getMovies(Number(page));
-  }, [search]);
+  }, [page]);
   return (
     <Section>
       <BackgroundSection>

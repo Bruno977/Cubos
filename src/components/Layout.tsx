@@ -1,4 +1,3 @@
-import { PropsWithChildren } from 'react';
 import { Header } from './Header';
 import { ThemeProvider } from 'styled-components';
 import { darkTheme } from '../styles/themes/dark';
@@ -6,6 +5,7 @@ import { useToggleThemeContext } from '../contexts/ToggleThemeContext';
 import { lightTheme } from '../styles/themes/light';
 import { GlobalStyle } from '../styles/global';
 import { Outlet } from 'react-router-dom';
+import { Footer } from './Footer';
 
 export function Layout() {
   const { theme } = useToggleThemeContext();
@@ -16,6 +16,7 @@ export function Layout() {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </ThemeProvider>
   );
 }
