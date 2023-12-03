@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { RatingProgress, RatingShadow } from '../../components/Rating/style';
 
 export const Section = styled.section`
   position: relative;
@@ -87,6 +88,19 @@ export const ContainerRating = styled.div`
   right: 0;
   bottom: 0;
   margin-top: 4.56rem;
+  ${RatingProgress} {
+    opacity: 0;
+    ${ListMovies} li:hover & {
+      opacity: 1;
+    }
+  }
+  ${RatingShadow} {
+    opacity: 0;
+
+    ${ListMovies} li:hover & {
+      opacity: 1;
+    }
+  }
 `;
 // export const RatingProgress = styled.div`
 //   position: absolute;
