@@ -8,7 +8,7 @@ export function EllipseShadow() {
       fill="none"
     >
       <g filter="url(#filter0_b_1043_893)">
-        <circle cx="70.5" cy="70" r="70" fill="black" fillOpacity="0.5" />
+        <circle cx="70.5" cy="70" r="70" fill="#121113" fillOpacity="0.5" />
       </g>
       <defs>
         <filter
