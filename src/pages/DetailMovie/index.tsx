@@ -6,6 +6,7 @@ import {
   ContainerMovie,
   ContainerMovieDescription,
   ContainerMovieSummary,
+  ContainerRating,
   ContainerTitleSinopseAndGenres,
   MovieIncoming,
   MovieRatingDesktop,
@@ -15,6 +16,8 @@ import {
 } from './style';
 import { BackgroundSection } from '../../components/BackgroundSection';
 import { VideosType } from '../../types/videos';
+import { Rating } from '../../components/Rating';
+import { format, formatISO, parseISO } from 'date-fns';
 
 export function DetailMovie() {
   const { id } = useParams();
@@ -76,6 +79,9 @@ export function DetailMovie() {
                     <strong>Votos</strong>
                     <p>{movie.vote_count}</p>
                   </div>
+                  <ContainerRating>
+                    <Rating average={movie.vote_average} />
+                  </ContainerRating>
                 </MovieRatingMobile>
                 <div>
                   <strong>Sinopse</strong>
@@ -101,11 +107,14 @@ export function DetailMovie() {
                     <strong>Votos</strong>
                     <p>{movie.vote_count}</p>
                   </div>
+                  <ContainerRating>
+                    <Rating average={movie.vote_average} />
+                  </ContainerRating>
                 </MovieRatingDesktop>
                 <MovieRelease>
                   <div>
                     <strong>Lançamento</strong>
-                    <p>{movie.release_date}</p>
+                    <p>{format(parseISO(movie.release_date), 'MM/dd/yyyy')}</p>
                   </div>
                   <div>
                     <strong>Duração</strong>

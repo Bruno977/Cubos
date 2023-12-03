@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { rgba as ConvertRgba } from 'polished';
+import { RatingShadow } from '../../components/Rating/style';
 
 export const ContainerMovie = styled.section`
   padding-left: 1rem;
@@ -11,6 +12,12 @@ export const ContainerMovie = styled.section`
   @media screen and (min-width: 1024px) {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  @media screen and (min-width: 1536px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1536px;
+    margin: 0 auto;
   }
 `;
 
@@ -135,6 +142,19 @@ export const ContainerTitleSinopseAndGenres = styled.div`
   }
 `;
 
+export const ContainerRating = styled.div`
+  > div {
+    width: 6.125rem;
+    height: 6.125rem;
+    ${RatingShadow} {
+      svg {
+        width: 6.125rem;
+        height: 6.125rem;
+      }
+    }
+  }
+`;
+
 export const ContainerMovieDescription = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -157,7 +177,6 @@ const CardRating = css`
     color: ${(props) => props.theme.colors.white};
     font-size: 0.875rem;
     font-weight: 600;
-    /* text-transform: uppercase; */
   }
 `;
 
@@ -166,19 +185,20 @@ export const MovieRatingDesktop = styled.div`
 
   @media screen and (min-width: 1024px) {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-end;
     gap: 1rem;
-    div {
+    > div:not(:last-of-type) {
       ${CardRating}
     }
   }
 `;
 export const MovieRatingMobile = styled.div`
   display: flex;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  div {
+  > div:not(:last-of-type) {
     ${CardRating}
   }
 
