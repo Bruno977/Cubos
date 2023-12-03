@@ -3,7 +3,6 @@ import { api } from '../../services/api';
 import { Container } from '../../styles/global';
 import { MoviesProps } from '../../types/movies';
 import {
-  BackgroundSection,
   ContainerRating,
   MovieDescription,
   ListMovies,
@@ -18,6 +17,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { GenresProps } from '../../types/genres';
 import { Rating } from '../../components/Rating';
 import { EllipseShadow } from '../../assets/icons/EllipseShadow';
+
+import { BackgroundSection } from '../../components/BackgroundSection';
 
 export function Home() {
   const { search } = useLocation();
@@ -70,9 +71,10 @@ export function Home() {
   }, [page]);
   return (
     <Section>
-      <BackgroundSection>
+      {/* <BackgroundSection>
         <div />
-      </BackgroundSection>
+      </BackgroundSection> */}
+      <BackgroundSection />
       <Container>
         <Search />
       </Container>
@@ -81,7 +83,7 @@ export function Home() {
           <ListMovies>
             {movies.map((movie) => (
               <li key={movie.id}>
-                <Link to={'#'}>
+                <Link to={`/detalhes/${movie.id}`}>
                   <img
                     src={process.env.REACT_APP_IMAGE_URL + movie.poster_path}
                     alt={movie.original_title}
