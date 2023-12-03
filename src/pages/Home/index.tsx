@@ -6,8 +6,6 @@ import {
   ContainerRating,
   MovieDescription,
   ListMovies,
-  RatingProgress,
-  RatingShadow,
   Section,
   ContainerMovies,
 } from './style';
@@ -89,12 +87,13 @@ export function Home() {
                     alt={movie.original_title}
                   />
                   <ContainerRating>
-                    <RatingProgress>
+                    <Rating average={movie.vote_average} />
+                    {/* <RatingProgress>
                       <Rating average={movie.vote_average} />
                     </RatingProgress>
                     <RatingShadow>
                       <EllipseShadow />
-                    </RatingShadow>
+                    </RatingShadow> */}
                   </ContainerRating>
 
                   <MovieDescription>

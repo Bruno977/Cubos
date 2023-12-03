@@ -88,39 +88,39 @@ export const ContainerRating = styled.div`
   bottom: 0;
   margin-top: 4.56rem;
 `;
-export const RatingProgress = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: 20;
+// export const RatingProgress = styled.div`
+//   position: absolute;
+//   inset: 0;
+//   z-index: 20;
 
-  max-width: 144px;
-  max-height: 144px;
-  margin: 0 auto;
-  border-radius: 99999px;
-  backdrop-filter: blur(2px);
+//   max-width: 144px;
+//   max-height: 144px;
+//   margin: 0 auto;
+//   border-radius: 99999px;
+//   backdrop-filter: blur(2px);
 
-  transition: opacity 0.2s ease-in-out 0s;
-  opacity: 0;
-  ${ListMovies} li:hover & {
-    opacity: 1;
-  }
-`;
+//   transition: opacity 0.2s ease-in-out 0s;
+//   opacity: 0;
+//   ${ListMovies} li:hover & {
+//     opacity: 1;
+//   }
+// `;
 
-export const RatingShadow = styled.div`
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  left: 5px;
-  bottom: 2px;
-  z-index: 10;
-  max-width: 144px;
-  max-height: 144px;
-  margin: 0 auto;
+// export const RatingShadow = styled.div`
+//   position: absolute;
+//   top: 2px;
+//   right: 2px;
+//   left: 5px;
+//   bottom: 2px;
+//   z-index: 10;
+//   max-width: 144px;
+//   max-height: 144px;
+//   margin: 0 auto;
 
-  transition: opacity 0.2s ease-in-out 0s;
-  opacity: 0;
+//   transition: opacity 0.2s ease-in-out 0s;
+//   opacity: 0;
 
-  ${ListMovies} li:hover & {
-    opacity: 1;
-  }
-`;
+//   ${ListMovies} li:hover & {
+//     opacity: 1;
+//   }
+// `;
