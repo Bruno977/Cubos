@@ -14,7 +14,6 @@ import { Pagination } from '../../components/Pagination';
 import { Link, useLocation } from 'react-router-dom';
 import { GenresProps } from '../../types/genres';
 import { Rating } from '../../components/Rating';
-import { EllipseShadow } from '../../assets/icons/EllipseShadow';
 
 import { BackgroundSection } from '../../components/BackgroundSection';
 
@@ -22,6 +21,7 @@ export function Home() {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
   const page = queryParams.get('page');
+  const searchParams = queryParams.get('search');
 
   const [movies, setMovies] = useState<MoviesProps['results'][] | null>(null);
   const [pages, setPages] = useState({
@@ -45,33 +45,59 @@ export function Home() {
 
   async function getMovies(page: number) {
     try {
+      console.log(page);
       const response = await api.get('/movie/popular', {
         params: {
           language: 'pt-BR',
-          page: page ? page : pages.page,
+          page: page > 0 ? page : 1,
         },
       });
       setMovies(response.data.results);
       setPages({
         page: response.data.page,
-        totalPages: response.data.totalPages,
+        totalPages: response.data.total_pages,
       });
       console.log(response.data.results);
     } catch (error) {
       console.log(error);
     }
   }
+
+  async function handleSearchMovie(value: string, page: number) {
+    try {
+      const response = await api.get('/search/movie', {
+        params: {
+          query: value,
+          language: 'pt-BR',
+          page: page > 0 ? page : 1,
+        },
+      });
+
+      setMovies(response.data.results);
+      setPages({
+        page: response.data.page,
+        totalPages: response.data.total_pages,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getGenres();
   }, []);
+
   useEffect(() => {
-    getMovies(Number(page));
-  }, [page]);
+    if (searchParams) {
+      handleSearchMovie(searchParams, Number(page));
+    }
+    if (!searchParams) {
+      getMovies(Number(page));
+    }
+  }, [page, searchParams]);
   return (
     <Section>
-      {/* <BackgroundSection>
-        <div />
-      </BackgroundSection> */}
       <BackgroundSection />
       <Container>
         <Search />
@@ -88,12 +114,6 @@ export function Home() {
                   />
                   <ContainerRating>
                     <Rating average={movie.vote_average} />
-                    {/* <RatingProgress>
-                      <Rating average={movie.vote_average} />
-                    </RatingProgress>
-                    <RatingShadow>
-                      <EllipseShadow />
-                    </RatingShadow> */}
                   </ContainerRating>
 
                   <MovieDescription>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerSearch = styled.div`
+export const FormSearch = styled.form`
   padding: 1.5rem 0rem;
 
   display: flex;
@@ -27,9 +27,9 @@ export const ContainerInput = styled.div`
     color: ${(props) => props.theme.colors.mauve12};
     transition: ${(props) => props.theme.transition};
 
-    &:focus,
-    &:focus-visible,
-    &:hover {
+    &:focus:not(:disabled),
+    &:focus-visible:not(:disabled),
+    &:hover:not(:disabled) {
       border-color: ${(props) => props.theme.colors.purple9};
       outline: none;
       caret-color: ${(props) => props.theme.colors.purple9};
@@ -53,11 +53,13 @@ export const ContainerInput = styled.div`
       transition: ${(props) => props.theme.transition};
 
       cursor: pointer;
-      svg {
-        &:hover {
-          path {
-            fill: ${(props) => props.theme.colors.purple10};
-            stroke: ${(props) => props.theme.colors.purple10};
+      &:not(button:disabled) {
+        svg {
+          &:hover {
+            path {
+              fill: ${(props) => props.theme.colors.purple10};
+              stroke: ${(props) => props.theme.colors.purple10};
+            }
           }
         }
       }
@@ -73,7 +75,7 @@ export const ContainerButtonFilter = styled.button`
   transition: ${(props) => props.theme.transition};
   background-color: ${(props) => props.theme.colors.purpleA2};
   cursor: pointer;
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: ${(props) => props.theme.colors.purple10};
     svg path,
     svg circle {

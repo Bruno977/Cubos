@@ -7,6 +7,7 @@ import {
   PrevButtonPagination,
 } from './style';
 import { DefaultTheme, ThemeContext } from 'styled-components';
+import { useLocation } from 'react-router-dom';
 interface PaginationProps {
   pages: number;
   currentPage: number;
@@ -14,6 +15,9 @@ interface PaginationProps {
 
 export function Pagination({ pages, currentPage }: PaginationProps) {
   const { colors } = useContext(ThemeContext) as DefaultTheme;
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const searchParams = queryParams.get('search');
 
   let startPage: number;
   let endPage;
@@ -42,7 +46,9 @@ export function Pagination({ pages, currentPage }: PaginationProps) {
   return (
     <ContainerPagination>
       <PrevButtonPagination
-        to={`?page=${Number(currentPage) - 1}`}
+        to={`${searchParams ? '?search=' + searchParams + '&' : '?'}page=${
+          Number(currentPage) - 1
+        }`}
         disabled={Number(currentPage) <= 1}
       >
         <IconChevronRight
@@ -51,7 +57,9 @@ export function Pagination({ pages, currentPage }: PaginationProps) {
       </PrevButtonPagination>
       {totalPages.map((pageNumber) => (
         <Pages
-          to={`?page=${pageNumber}`}
+          to={`${
+            searchParams ? '?search=' + searchParams + '&' : '?'
+          }page=${pageNumber}`}
           key={pageNumber}
           disabled={Number(currentPage) === pageNumber}
         >
@@ -59,7 +67,9 @@ export function Pagination({ pages, currentPage }: PaginationProps) {
         </Pages>
       ))}
       <NextButtonPagination
-        to={`?page=${Number(currentPage) + 1}`}
+        to={`${searchParams ? '?search=' + searchParams + '&' : '?'}page=${
+          Number(currentPage) + 1
+        }`}
         disabled={Number(currentPage) >= pages}
       >
         <IconChevronRight
