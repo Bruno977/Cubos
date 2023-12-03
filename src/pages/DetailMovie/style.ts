@@ -2,13 +2,17 @@ import styled, { css } from 'styled-components';
 import { rgba as ConvertRgba } from 'polished';
 import { RatingShadow } from '../../components/Rating/style';
 
+export const SectionDetails = styled.section`
+  position: relative;
+  z-index: 10;
+`;
+
 export const ContainerMovie = styled.section`
   padding-left: 1rem;
   padding-right: 1rem;
 
   padding-top: 116px;
-  position: relative;
-  z-index: 10;
+
   @media screen and (min-width: 1024px) {
     padding-left: 2rem;
     padding-right: 2rem;
