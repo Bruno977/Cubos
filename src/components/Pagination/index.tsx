@@ -8,6 +8,7 @@ import {
 } from './style';
 import { DefaultTheme, ThemeContext } from 'styled-components';
 import { useLocation } from 'react-router-dom';
+import qs from 'qs';
 interface PaginationProps {
   pages: number;
   currentPage: number;
@@ -16,8 +17,9 @@ interface PaginationProps {
 export function Pagination({ pages, currentPage }: PaginationProps) {
   const { colors } = useContext(ThemeContext) as DefaultTheme;
   const { search } = useLocation();
-  const queryParams = new URLSearchParams(search);
-  const searchParams = queryParams.get('search');
+  const parse = qs.parse(search, { ignoreQueryPrefix: true });
+  delete parse.page;
+  const query = qs.stringify(parse);
 
   let startPage: number;
   let endPage;
@@ -46,9 +48,7 @@ export function Pagination({ pages, currentPage }: PaginationProps) {
   return (
     <ContainerPagination>
       <PrevButtonPagination
-        to={`${searchParams ? '?search=' + searchParams + '&' : '?'}page=${
-          Number(currentPage) - 1
-        }`}
+        to={`${query ? '?' + query + '&' : '?'}page=${Number(currentPage) - 1}`}
         disabled={Number(currentPage) <= 1}
       >
         <IconChevronRight
@@ -57,9 +57,7 @@ export function Pagination({ pages, currentPage }: PaginationProps) {
       </PrevButtonPagination>
       {totalPages.map((pageNumber) => (
         <Pages
-          to={`${
-            searchParams ? '?search=' + searchParams + '&' : '?'
-          }page=${pageNumber}`}
+          to={`${query ? '?' + query + '&' : '?'}page=${pageNumber}`}
           key={pageNumber}
           disabled={Number(currentPage) === pageNumber}
         >
@@ -67,9 +65,7 @@ export function Pagination({ pages, currentPage }: PaginationProps) {
         </Pages>
       ))}
       <NextButtonPagination
-        to={`${searchParams ? '?search=' + searchParams + '&' : '?'}page=${
-          Number(currentPage) + 1
-        }`}
+        to={`${query ? '?' + query + '&' : '?'}page=${Number(currentPage) + 1}`}
         disabled={Number(currentPage) >= pages}
       >
         <IconChevronRight
