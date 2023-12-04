@@ -12,7 +12,7 @@ Este projeto foi desenvolvido utilizando React, TypeScript, Radix Colors, e Styl
 
 1. Clone este repositório para a sua máquina local:
 ```bash
-git clone https://github.com/seu-usuario/seu-projeto.git
+git clone https://github.com/Bruno977/Cubos.git
 ```
 2. Navegue até o Diretório do Projeto:
 ```bash
