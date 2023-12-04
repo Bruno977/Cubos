@@ -28,8 +28,15 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
+
   @media screen and (min-width: 1024px) {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  @media screen and (min-width: 1536px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1536px;
+    margin: 0 auto;
   }
 `;
