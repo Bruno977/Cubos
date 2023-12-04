@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.colors.mauve1};
     font-family: 'Montserrat', sans-serif;
     width: 100%;
+    ${(props) => props.theme.transition}
   }
   a{
     text-decoration: none;

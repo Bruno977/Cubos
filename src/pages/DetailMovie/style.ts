@@ -5,6 +5,7 @@ import { RatingShadow } from '../../components/Rating/style';
 export const SectionDetails = styled.section`
   position: relative;
   z-index: 10;
+  min-height: 100vh;
 `;
 
 export const ContainerMovie = styled.section`
@@ -178,7 +179,7 @@ const CardRating = css`
     text-transform: uppercase;
   }
   p {
-    color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.mauve12};
     font-size: 0.875rem;
     font-weight: 600;
   }

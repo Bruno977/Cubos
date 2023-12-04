@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { RatingProgress, RatingShadow } from '../../components/Rating/style';
 
 export const Section = styled.section`
@@ -20,7 +20,7 @@ export const ContainerMovies = styled.div`
   }
 `;
 
-export const ListMovies = styled.ul`
+export const ListMovies = styled.ul<{ $skeleton?: boolean }>`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
@@ -36,7 +36,16 @@ export const ListMovies = styled.ul`
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    min-height: 350px;
+
+    ${(props) =>
+      props.$skeleton &&
+      css`
+        min-height: 350px;
+        @media screen and (min-width: 1024px) {
+          min-height: 350px;
+        }
+      `}
+
     a {
       display: block;
     }

@@ -31,11 +31,16 @@ export const ContainerCheckbox = styled.div`
 `;
 
 export const Form = styled.form`
-  > div {
+  > div:first-of-type {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+
+    @media screen and (min-width: 1024px) {
+      gap: 1rem;
+      flex-direction: row;
+    }
   }
 `;
 

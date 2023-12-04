@@ -125,7 +125,7 @@ export function Home() {
       </Container>
       <ContainerMovies>
         {loading && (
-          <ListMovies>
+          <ListMovies $skeleton={true}>
             {Array.from({ length: 20 }).map((_, index) => (
               <li key={index}>
                 <SkeletonSpot />
@@ -146,6 +146,7 @@ export function Home() {
                   ) : (
                     <SkeletonSpot />
                   )}
+
                   <ContainerRating>
                     <Rating average={movie.vote_average} />
                   </ContainerRating>

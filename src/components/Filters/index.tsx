@@ -81,13 +81,6 @@ export function Filters({ filterIsActive, handleCloseFilters }: FiltersProps) {
                 : []
             }
           />
-          <Input
-            type="number"
-            name="year"
-            id="year"
-            placeholder="Ano"
-            label="Ano"
-          />
           <Select
             id="sort_by"
             label="Ordenar por"
@@ -134,6 +127,13 @@ export function Filters({ filterIsActive, handleCloseFilters }: FiltersProps) {
                 label: 'Contagem de Votos Z-A',
               },
             ]}
+          />
+          <Input
+            type="number"
+            name="year"
+            id="year"
+            placeholder="Ano"
+            label="Ano"
           />
         </div>
         <ContainerButtons>

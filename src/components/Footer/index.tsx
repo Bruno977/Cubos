@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContainerFooter } from './style';
 
 export function Footer() {

@@ -6,6 +6,7 @@ export const Container = styled.div`
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
   label {
     color: ${(props) => props.theme.colors.mauve12};
     font-size: 0.8rem;
