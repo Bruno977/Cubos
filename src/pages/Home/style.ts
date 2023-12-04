@@ -12,6 +12,12 @@ export const ContainerMovies = styled.div`
     padding-left: 2rem;
     padding-right: 2rem;
   }
+  @media screen and (min-width: 1536px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1536px;
+    margin: 0 auto;
+  }
 `;
 
 export const ListMovies = styled.ul`
@@ -102,39 +108,3 @@ export const ContainerRating = styled.div`
     }
   }
 `;
-// export const RatingProgress = styled.div`
-//   position: absolute;
-//   inset: 0;
-//   z-index: 20;
-
-//   max-width: 144px;
-//   max-height: 144px;
-//   margin: 0 auto;
-//   border-radius: 99999px;
-//   backdrop-filter: blur(2px);
-
-//   transition: opacity 0.2s ease-in-out 0s;
-//   opacity: 0;
-//   ${ListMovies} li:hover & {
-//     opacity: 1;
-//   }
-// `;
-
-// export const RatingShadow = styled.div`
-//   position: absolute;
-//   top: 2px;
-//   right: 2px;
-//   left: 5px;
-//   bottom: 2px;
-//   z-index: 10;
-//   max-width: 144px;
-//   max-height: 144px;
-//   margin: 0 auto;
-
-//   transition: opacity 0.2s ease-in-out 0s;
-//   opacity: 0;
-
-//   ${ListMovies} li:hover & {
-//     opacity: 1;
-//   }
-// `;

@@ -5,8 +5,12 @@ import { ThemeContext } from 'styled-components';
 import { DefaultTheme } from 'styled-components';
 import { IconFilter } from '../../assets/icons/IconFilter';
 import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
+type SearchProps = {
+  handleShowFilters: () => void;
+  filterIsActive: boolean;
+};
 
-export function Search() {
+export function Search({ filterIsActive, handleShowFilters }: SearchProps) {
   const { colors } = useContext(ThemeContext) as DefaultTheme;
   const [disabledInput, setDisabledInput] = useState(false);
   const [inputValue, setInputValue] = useState('');
@@ -70,7 +74,11 @@ export function Search() {
           </button>
         </div>
       </ContainerInput>
-      <ContainerButtonFilter>
+
+      <ContainerButtonFilter
+        $active={filterIsActive}
+        onClick={handleShowFilters}
+      >
         <IconFilter color={colors.mauve12} />
       </ContainerButtonFilter>
     </FormSearch>

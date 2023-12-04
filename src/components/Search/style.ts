@@ -67,14 +67,21 @@ export const ContainerInput = styled.div`
   }
 `;
 
-export const ContainerButtonFilter = styled.button`
+export const ContainerButtonFilter = styled.button<{ $active: boolean }>`
   padding: 0.75rem 1.25rem;
   height: 3.5rem;
   border-radius: 0.125rem;
   backdrop-filter: blur(2px);
   transition: ${(props) => props.theme.transition};
-  background-color: ${(props) => props.theme.colors.purpleA2};
+  background-color: ${(props) =>
+    props.$active ? props.theme.colors.purple10 : props.theme.colors.purpleA2};
   cursor: pointer;
+
+  svg path,
+  svg circle {
+    stroke: ${(props) =>
+      props.$active ? props.theme.colors.white : props.theme.colors.mauve12};
+  }
   &:hover:not(:disabled) {
     background-color: ${(props) => props.theme.colors.purple10};
     svg path,

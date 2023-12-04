@@ -16,18 +16,21 @@ import { GenresProps } from '../../types/genres';
 import { Rating } from '../../components/Rating';
 
 import { BackgroundSection } from '../../components/BackgroundSection';
+import { Filters } from '../../components/Filters';
+import qs from 'qs';
 
 export function Home() {
+  const [showFilters, setShowFilters] = useState(false);
   const { search } = useLocation();
-  const queryParams = new URLSearchParams(search);
-  const page = queryParams.get('page');
-  const searchParams = queryParams.get('search');
+  const queryParams = qs.parse(search, { ignoreQueryPrefix: true });
 
   const [movies, setMovies] = useState<MoviesProps['results'][] | null>(null);
+
   const [pages, setPages] = useState({
     page: 1,
     totalPages: 1,
   });
+
   const [genres, setGenres] = useState<GenresProps[] | null>(null);
 
   async function getGenres() {
@@ -43,13 +46,12 @@ export function Home() {
     }
   }
 
-  async function getMovies(page: number) {
+  async function getMovies() {
     try {
-      console.log(page);
-      const response = await api.get('/movie/popular', {
+      const response = await api.get(`/discover/movie`, {
         params: {
+          ...queryParams,
           language: 'pt-BR',
-          page: page > 0 ? page : 1,
         },
       });
       setMovies(response.data.results);
@@ -57,7 +59,6 @@ export function Home() {
         page: response.data.page,
         totalPages: response.data.total_pages,
       });
-      console.log(response.data.results);
     } catch (error) {
       console.log(error);
     }
@@ -72,13 +73,11 @@ export function Home() {
           page: page > 0 ? page : 1,
         },
       });
-
       setMovies(response.data.results);
       setPages({
         page: response.data.page,
         totalPages: response.data.total_pages,
       });
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -89,18 +88,28 @@ export function Home() {
   }, []);
 
   useEffect(() => {
-    if (searchParams) {
-      handleSearchMovie(searchParams, Number(page));
+    if (queryParams.search) {
+      handleSearchMovie(String(queryParams.search), Number(queryParams.page));
     }
-    if (!searchParams) {
-      getMovies(Number(page));
+    if (!queryParams.search) {
+      getMovies();
     }
-  }, [page, searchParams]);
+  }, [search]);
+
   return (
     <Section>
       <BackgroundSection />
       <Container>
-        <Search />
+        <Search
+          filterIsActive={showFilters}
+          handleShowFilters={() => setShowFilters(!showFilters)}
+        />
+        {showFilters && (
+          <Filters
+            filterIsActive={showFilters}
+            handleCloseFilters={() => setShowFilters(false)}
+          />
+        )}
       </Container>
       <ContainerMovies>
         {movies && movies.length > 0 && (
