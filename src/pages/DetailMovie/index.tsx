@@ -19,13 +19,16 @@ import { BackgroundSection } from '../../components/BackgroundSection';
 import { VideosType } from '../../types/videos';
 import { Rating } from '../../components/Rating';
 import { format, parseISO } from 'date-fns';
+import { Loading } from '../../components/Loading';
 
 export function DetailMovie() {
   const { id } = useParams();
   const [movie, setMovie] = useState<MovieType | null>(null);
+  const [loading, setLoading] = useState(false);
   const [trailerMovie, setTrailerMovie] = useState<VideosType | null>(null);
 
   async function getMovieDetails() {
+    setLoading(true);
     try {
       const response = await api.get(`/movie/${id}`, {
         params: {
@@ -46,11 +49,17 @@ export function DetailMovie() {
       setTrailerMovie(responseVideos.data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
   useEffect(() => {
     getMovieDetails();
   }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <SectionDetails>
