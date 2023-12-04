@@ -15,6 +15,9 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     ${(props) => props.theme.transition}
   }
+  input, button, label{
+    font-family: 'Roboto', sans-serif;
+  }
   a{
     text-decoration: none;
   }

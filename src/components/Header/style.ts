@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const HeaderContainer = styled.header`
+type HeaderContainerProps = {
+  $scrolled: boolean;
+};
+
+export const HeaderContainer = styled.header<HeaderContainerProps>`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,6 +18,13 @@ export const HeaderContainer = styled.header`
 
   border-bottom: 1px solid ${(props) => props.theme.colors.mauve6};
   backdrop-filter: blur(2px);
+  transition: ${(props) => props.theme.transition};
+
+  ${(props) =>
+    props.$scrolled &&
+    css`
+      background-color: ${(props) => props.theme.colors.mauve1};
+    `}
 
   a {
     display: flex;

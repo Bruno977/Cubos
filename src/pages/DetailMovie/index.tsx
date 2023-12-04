@@ -43,8 +43,6 @@ export function DetailMovie() {
           },
         }
       );
-
-      console.log(response.data);
       setMovie(response.data);
       setTrailerMovie(responseVideos.data);
     } catch (error) {
