@@ -7,6 +7,7 @@ Este projeto foi desenvolvido utilizando React, TypeScript, Radix Colors, e Styl
 ### Pré-requisitos
 
 - Node.js e npm instalados na sua máquina.
+- Além disso, é necessário preencher o arquivo `.env`. Você pode encontrar um exemplo no arquivo `.env.example`. Copie o conteúdo desse arquivo para um novo arquivo chamado `.env` e preencha os valores necessários.
 
 ### Instalação
 
