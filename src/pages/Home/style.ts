@@ -36,6 +36,10 @@ export const ListMovies = styled.ul`
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    min-height: 350px;
+    a {
+      display: block;
+    }
 
     &:before {
       content: '';
@@ -48,6 +52,7 @@ export const ListMovies = styled.ul`
     }
     img {
       height: 100%;
+      object-fit: cover;
     }
   }
 

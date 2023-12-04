@@ -13,12 +13,15 @@ export const SkeletonWrapper = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 350px;
+  /* min-height: 350px; */
+  height: 100%;
 `;
 
 export const SkeletonImage = styled.div`
   width: 100%;
   height: 100%;
+  /* min-height: 350px; */
+
   background: linear-gradient(
     90deg,
     ${(props) => props.theme.colors.mauveA3} 25%,
