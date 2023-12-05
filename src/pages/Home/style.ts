@@ -40,7 +40,7 @@ export const ListMovies = styled.ul<{ $skeleton?: boolean }>`
     ${(props) =>
       props.$skeleton &&
       css`
-        min-height: 350px;
+        min-height: 250px;
         @media screen and (min-width: 1024px) {
           min-height: 350px;
         }
@@ -62,6 +62,11 @@ export const ListMovies = styled.ul<{ $skeleton?: boolean }>`
     img {
       height: 100%;
       object-fit: cover;
+      min-height: 250px;
+
+      @media screen and (min-width: 1024px) {
+        min-height: 350px;
+      }
     }
   }
 
