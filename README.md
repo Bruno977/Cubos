@@ -1,5 +1,7 @@
 # Cubos Movies
 
+Projeto: [Cubos Movies](https://cubos-eta.vercel.app/)
+
 ## Instruções de Compilação/Execução
 
 Este projeto foi desenvolvido utilizando React, TypeScript, Radix Colors, e Styled Components. Siga os passos abaixo para compilar e executar o web app:
