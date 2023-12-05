@@ -2,6 +2,8 @@
 
 Projeto: [Cubos Movies](https://cubos-eta.vercel.app/)
 
+**Observação:** O projeto está paginado com 20 itens, pois é o que a API permite.
+
 ## Instruções de Compilação/Execução
 
 Este projeto foi desenvolvido utilizando React, TypeScript, Radix Colors, e Styled Components. Siga os passos abaixo para compilar e executar o web app:
